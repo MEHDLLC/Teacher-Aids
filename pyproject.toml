@@ -9,6 +9,12 @@ description = "Parametric generators for printable classroom teaching aids"
 requires-python = ">=3.10"
 dependencies = ["manifold3d>=2.5", "numpy>=1.24"]
 
+[project.optional-dependencies]
+# Only the workflow tests need this: they read the YAML in .github/workflows
+# and check it against the generator registry. Keeping it out of the runtime
+# dependencies means printing a model never needs a YAML parser.
+test = ["pyyaml>=6"]
+
 [project.scripts]
 teachergen = "teacheraids.cli:main"
 

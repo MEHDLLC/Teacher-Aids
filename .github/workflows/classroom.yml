@@ -38,8 +38,22 @@ on:
         default: ""
   push:
     paths:
+      # This category's own catalogue and its own generators.
       - catalogues/classroom.json
-      - src/teacheraids/generators/**
+      - src/teacheraids/generators/bookmark.py
+      - src/teacheraids/generators/hall_pass.py
+      - src/teacheraids/generators/name_plate.py
+      - src/teacheraids/generators/__init__.py
+      # The shared engine, which is deliberately not narrowed: a change to
+      # font.py redraws every letterform, and one to geom.py or mesh_io.py
+      # changes every mesh in the repo. Those have to rebuild all five
+      # categories or the published sets quietly fall out of date. The single
+      # `*` does not match a slash, so this is the top-level modules only and
+      # not the generators directory above.
+      - src/teacheraids/*.py
+      # And the workflow that builds it.
+      - .github/workflows/classroom.yml
+      - .github/workflows/build-category.yml
 
 permissions:
   contents: read

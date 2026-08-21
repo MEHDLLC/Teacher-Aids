@@ -57,10 +57,20 @@ class NumberLineGenerator(Generator):
 register(NumberLineGenerator())
 ```
 
-Then add it to `src/teacheraids/generators/__init__.py` — importing the module
-is what registers it — and add at least one entry to its category's catalogue.
-`tests/test_catalogue.py` fails if a generator appears in no catalogue, and
-`tests/test_generators.py` builds every registered generator at its defaults.
+Then three things, each of which has a test that fails if you forget it:
+
+1. Import it in `src/teacheraids/generators/__init__.py` — importing the module
+   is what registers it.
+2. Add at least one entry to its category's catalogue.
+   `tests/test_catalogue.py` fails if a generator appears in no catalogue.
+3. Add its module to the `push: paths:` filter in its category's workflow, so
+   changing it rebuilds that category. `tests/test_workflows.py` reads those
+   filters back and compares them against the registry, because a missing line
+   there fails silently: the category simply stops rebuilding, and nothing goes
+   red to tell you.
+
+`tests/test_generators.py` then builds every registered generator at its
+defaults and holds it to the same bar as the rest.
 
 ## What the framework gives you
 
@@ -111,5 +121,14 @@ Categories are declared in `src/teacheraids/generator.py`. A new one needs:
 1. an entry in `CATEGORIES` and `CATEGORY_TITLES`,
 2. a `catalogues/<name>.json` with a `release` block,
 3. a `.github/workflows/<name>.yml` copied from any of the existing five — they
-   differ only in the category they pass to `build-category.yml`,
+   differ only in the category they pass to `build-category.yml` and the paths
+   they watch,
 4. the category added to the smoke-build loop in `ci.yml`.
+
+A category workflow watches its own catalogue and its own generators, so a
+change to one generator rebuilds one category. It also watches
+`src/teacheraids/*.py`, which is deliberately *not* narrowed: a change to
+`font.py` redraws every letterform in the repo and a change to `geom.py` or
+`mesh_io.py` changes every mesh, so those have to rebuild all five or the
+published sets quietly go stale. The single `*` does not match a slash, so that
+entry covers the top-level modules and not the generators directory.

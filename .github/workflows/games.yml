@@ -38,8 +38,21 @@ on:
         default: ""
   push:
     paths:
+      # This category's own catalogue and its own generators.
       - catalogues/games.json
-      - src/teacheraids/generators/**
+      - src/teacheraids/generators/dice.py
+      - src/teacheraids/generators/spinner.py
+      - src/teacheraids/generators/__init__.py
+      # The shared engine, which is deliberately not narrowed: a change to
+      # font.py redraws every letterform, and one to geom.py or mesh_io.py
+      # changes every mesh in the repo. Those have to rebuild all five
+      # categories or the published sets quietly fall out of date. The single
+      # `*` does not match a slash, so this is the top-level modules only and
+      # not the generators directory above.
+      - src/teacheraids/*.py
+      # And the workflow that builds it.
+      - .github/workflows/games.yml
+      - .github/workflows/build-category.yml
 
 permissions:
   contents: read

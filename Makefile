@@ -3,7 +3,7 @@ PYTHON ?= python3
 .PHONY: test demo proofs batch verify clean install
 
 install:
-	pip install -e .
+	pip install -e ".[test]"
 
 test:
 	$(PYTHON) -m unittest discover -s tests -t tests -v
