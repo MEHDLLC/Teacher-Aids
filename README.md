@@ -22,6 +22,27 @@ options.*
 
 ---
 
+## Download the models
+
+You do not have to run anything. Every category is published as a release,
+built by its own workflow and verified before it was tagged.
+
+| Release | Models | Download |
+|---|---|---|
+| [Letters and Literacy v0.1.0](https://github.com/MEHDLLC/Teacher-Aids/releases/tag/teacher-aids-alphabet-v0.1.0) | 18 | [zip, 10.7 MB](https://github.com/MEHDLLC/Teacher-Aids/releases/download/teacher-aids-alphabet-v0.1.0/teacher-aids-alphabet-v0.1.0.zip) |
+| [Maths Manipulatives v0.1.0](https://github.com/MEHDLLC/Teacher-Aids/releases/tag/teacher-aids-math-v0.1.0) | 21 | [zip, 6.6 MB](https://github.com/MEHDLLC/Teacher-Aids/releases/download/teacher-aids-math-v0.1.0/teacher-aids-math-v0.1.0.zip) |
+| [Classroom Organisation v0.1.0](https://github.com/MEHDLLC/Teacher-Aids/releases/tag/teacher-aids-organization-v0.1.0) | 15 | [zip, 1.7 MB](https://github.com/MEHDLLC/Teacher-Aids/releases/download/teacher-aids-organization-v0.1.0/teacher-aids-organization-v0.1.0.zip) |
+| [Classroom Kit v0.1.0](https://github.com/MEHDLLC/Teacher-Aids/releases/tag/teacher-aids-classroom-v0.1.0) | 14 | [zip, 5.9 MB](https://github.com/MEHDLLC/Teacher-Aids/releases/download/teacher-aids-classroom-v0.1.0/teacher-aids-classroom-v0.1.0.zip) |
+| [Games and Probability v0.1.0](https://github.com/MEHDLLC/Teacher-Aids/releases/tag/teacher-aids-games-v0.1.0) | 14 | [zip, 3.4 MB](https://github.com/MEHDLLC/Teacher-Aids/releases/download/teacher-aids-games-v0.1.0/teacher-aids-games-v0.1.0.zip) |
+
+Each zip holds one folder per model, an `INDEX.md` listing them, and a
+`verify.json` recording the topology check every mesh in it passed.
+
+Bumping a `version` in a catalogue's `release` block and re-running that
+category's workflow with `publish: yes` cuts the next one.
+
+---
+
 ## What it makes
 
 ### Letters and literacy — `catalogues/alphabet.json`
