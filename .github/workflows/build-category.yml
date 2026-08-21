@@ -59,8 +59,8 @@ jobs:
       matrix: ${{ steps.plan.outputs.matrix }}
       count: ${{ steps.plan.outputs.count }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
           cache: pip
@@ -99,8 +99,8 @@ jobs:
       matrix:
         include: ${{ fromJson(needs.plan.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
           cache: pip
@@ -124,7 +124,7 @@ jobs:
           # the others.
           teachergen batch "${ARGS[@]}" --out out --keep-going
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: ${{ inputs.category }}-chunk-${{ matrix.chunk }}
@@ -139,16 +139,20 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
           cache: pip
           cache-dependency-path: requirements.txt
       - run: pip install -e .
 
+      # download-artifact is pinned to v7 rather than v6 because v6 still
+      # runs on Node 20; v7 is the first major of it that does not. The other
+      # three actions reached Node 24 an earlier major each, but there is no
+      # reason to spread this across four different vintages.
       - name: Gather every chunk
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           path: release
           pattern: ${{ inputs.category }}-chunk-*
@@ -201,7 +205,7 @@ jobs:
           cat release/RELEASE-NOTES.md >> "$GITHUB_STEP_SUMMARY" || true
           echo "Planned ${{ needs.plan.outputs.count }} items; build result: ${{ needs.build.result }}" >> "$GITHUB_STEP_SUMMARY"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ inputs.category }}-models
           path: release/
