@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "_comment": "Classroom organisation. Sized around what actually goes in them: a measured barrel, a paperback's depth, a table group's worth of pencils.",
+  "release": {
+    "name": "teacher-aids-organization",
+    "version": "0.1.0",
+    "title": "Teacher Aids: Classroom Organisation",
+    "summary": "Desk caddies whose compartments are sized by what goes in them, tilted racks for markers and pencils built around measured barrel diameters, and book ends whose foot goes under the books so their own weight holds them down."
+  },
+  "items": [
+    {
+      "name": "caddy_table-group_3-up",
+      "generator": "supply-caddy",
+      "options": {
+        "columns": "1,1,1",
+        "width": 150,
+        "depth": 90,
+        "height": 90,
+        "handle": "bar"
+      }
+    },
+    {
+      "name": "caddy_table-group_scissors-glue-pencils",
+      "generator": "supply-caddy",
+      "options": {
+        "columns": "2,1,1",
+        "rows": "1,1",
+        "width": 180,
+        "depth": 110,
+        "height": 95,
+        "handle": "spine",
+        "pattern": "honeycomb"
+      },
+      "_comment": "a wide slot for scissors and rulers, four small ones for glue sticks and pencils"
+    },
+    {
+      "name": "caddy_labelled_table-1",
+      "generator": "supply-caddy",
+      "options": {
+        "columns": "1,1",
+        "width": 130,
+        "depth": 80,
+        "height": 85,
+        "label": "TABLE 1",
+        "pattern": "round"
+      }
+    },
+    {
+      "name": "caddy_shallow_art-tray",
+      "generator": "supply-caddy",
+      "options": {
+        "columns": "1,1,1,1",
+        "width": 200,
+        "depth": 120,
+        "height": 40,
+        "drain": true
+      },
+      "_comment": "shallow and drained: paint pots, wet brushes, wiped out at the end of the day"
+    },
+    {
+      "name": "marker-rack_expo_6x2",
+      "generator": "marker-rack",
+      "options": {
+        "bore": "expo-chisel",
+        "columns": 6,
+        "rows": 2
+      }
+    },
+    {
+      "name": "marker-rack_expo_8x1_board",
+      "generator": "marker-rack",
+      "options": {
+        "bore": "expo-chisel",
+        "columns": 8,
+        "rows": 1,
+        "label": "BOARD"
+      }
+    },
+    {
+      "name": "pencil-rack_8x3",
+      "generator": "marker-rack",
+      "options": {
+        "bore": "pencil",
+        "columns": 8,
+        "rows": 3,
+        "clearance": 1.6
+      }
+    },
+    {
+      "name": "brush-rack_10x2",
+      "generator": "marker-rack",
+      "options": {
+        "bore": "paintbrush",
+        "columns": 10,
+        "rows": 2,
+        "tilt": 8,
+        "depth_fraction": 0.3
+      }
+    },
+    {
+      "name": "glue-stick-rack_4x2",
+      "generator": "marker-rack",
+      "options": {
+        "bore": "glue-stick",
+        "columns": 4,
+        "rows": 2,
+        "label": "GLUE"
+      }
+    },
+    {
+      "name": "book-ends_150mm_plain",
+      "generator": "book-end",
+      "options": {
+        "height": 150,
+        "width": 120,
+        "foot": 110
+      }
+    },
+    {
+      "name": "book-ends_150mm_fiction",
+      "generator": "book-end",
+      "options": {
+        "height": 150,
+        "width": 120,
+        "pattern": "honeycomb",
+        "label": "FICTION"
+      }
+    },
+    {
+      "name": "book-ends_200mm_tall",
+      "generator": "book-end",
+      "options": {
+        "height": 200,
+        "width": 140,
+        "foot": 140,
+        "thickness": 5,
+        "pattern": "round"
+      }
+    }
+  ],
+  "sweeps": [
+    {
+      "generator": "book-end",
+      "name": "book-ends_150mm_{pattern}",
+      "options": {
+        "height": 150,
+        "width": 120,
+        "pair": false
+      },
+      "axes": {
+        "pattern": ["star", "chevron", "diamond", "triangle"]
+      },
+      "cap": 3,
+      "_comment": "single ends in a few patterns, to pick one before printing a shelf's worth"
+    }
+  ]
+}

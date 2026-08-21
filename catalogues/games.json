@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "_comment": "Games and probability. The unequal spinner is the point of the category: it asks questions a die cannot.",
+  "release": {
+    "name": "teacher-aids-games",
+    "version": "0.1.0",
+    "title": "Teacher Aids: Games and Probability",
+    "summary": "Dice in all five Platonic shapes with pips, numbers, letters, arithmetic signs or blank faces, and probability spinners whose sectors you size yourself -- with the probability each one actually came out at recorded in the listing."
+  },
+  "items": [
+    {
+      "name": "dice_d6_pips_18mm",
+      "generator": "dice",
+      "options": {
+        "shape": "cube",
+        "faces": "pips",
+        "size": 18,
+        "quantity": 4
+      }
+    },
+    {
+      "name": "dice_d6_numbers_18mm",
+      "generator": "dice",
+      "options": {
+        "shape": "cube",
+        "faces": "numbers",
+        "size": 18,
+        "quantity": 4
+      }
+    },
+    {
+      "name": "dice_d6_operators",
+      "generator": "dice",
+      "options": {
+        "shape": "cube",
+        "faces": "operators",
+        "size": 20,
+        "quantity": 2
+      },
+      "_comment": "roll two number dice and an operator die: that is the whole of mental arithmetic practice"
+    },
+    {
+      "name": "dice_d6_letters",
+      "generator": "dice",
+      "options": {
+        "shape": "cube",
+        "faces": "A,E,I,O,U,Y",
+        "size": 20,
+        "quantity": 3
+      }
+    },
+    {
+      "name": "dice_d6_blank_write-on",
+      "generator": "dice",
+      "options": {
+        "shape": "cube",
+        "faces": "blank",
+        "size": 22,
+        "quantity": 4
+      }
+    },
+    {
+      "name": "dice_d20_numbers",
+      "generator": "dice",
+      "options": {
+        "shape": "icosahedron",
+        "faces": "numbers",
+        "size": 20,
+        "quantity": 2
+      }
+    },
+    {
+      "name": "dice_polyhedral-set",
+      "generator": "dice",
+      "options": {
+        "shape": "dodecahedron",
+        "faces": "numbers",
+        "size": 20,
+        "quantity": 1
+      }
+    },
+    {
+      "name": "spinner_6-way_even",
+      "generator": "spinner",
+      "options": {
+        "labels": "1,2,3,4,5,6",
+        "diameter": 120
+      }
+    },
+    {
+      "name": "spinner_3-colour_weighted",
+      "generator": "spinner",
+      "options": {
+        "labels": "RED,BLUE,GREEN",
+        "weights": "3,2,1",
+        "diameter": 140
+      },
+      "_comment": "a half, a third and a sixth: the sectors are the fractions, which is the whole lesson"
+    },
+    {
+      "name": "spinner_win-lose_long-odds",
+      "generator": "spinner",
+      "options": {
+        "labels": "WIN,LOSE",
+        "weights": "1,5",
+        "diameter": 120
+      }
+    },
+    {
+      "name": "spinner_10-way",
+      "generator": "spinner",
+      "options": {
+        "labels": "1,2,3,4,5,6,7,8,9,10",
+        "diameter": 150
+      }
+    }
+  ],
+  "sweeps": [
+    {
+      "generator": "dice",
+      "name": "dice_{shape}_numbers_20mm",
+      "options": {
+        "faces": "numbers",
+        "size": 20,
+        "quantity": 1
+      },
+      "axes": {
+        "shape": ["tetrahedron", "octahedron", "icosahedron"]
+      },
+      "_comment": "the rest of the polyhedral set, one of each"
+    }
+  ]
+}

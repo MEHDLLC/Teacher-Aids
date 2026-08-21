@@ -1,0 +1,59 @@
+name: Classroom kit
+
+# Builds the classroom catalogue: Desk name plates, bookmarks and hall passes.
+#
+# Runs on its own, so a teacher after classroom models never waits on any
+# other category. The pipeline itself lives in build-category.yml.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "How many items to build (blank builds everything)"
+        required: false
+        default: ""
+      pick:
+        description: "Which ones, when limited"
+        required: false
+        default: spread
+        type: choice
+        options: [spread, first]
+      generator:
+        description: "Only this generator (blank for all)"
+        required: false
+        default: ""
+      chunk_size:
+        description: "Items per parallel job"
+        required: false
+        default: "6"
+      publish:
+        description: "Publish the result as a GitHub release"
+        required: false
+        default: "no"
+        type: choice
+        options: [ "no", "yes" ]
+      release_tag:
+        description: "Override the tag (blank derives it from the catalogue)"
+        required: false
+        default: ""
+  push:
+    paths:
+      - catalogues/classroom.json
+      - src/teacheraids/generators/**
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-category.yml
+    permissions:
+      contents: write
+    with:
+      category: classroom
+      limit: ${{ inputs.limit || '' }}
+      pick: ${{ inputs.pick || 'spread' }}
+      generator: ${{ inputs.generator || '' }}
+      chunk_size: ${{ inputs.chunk_size || '6' }}
+      publish: ${{ inputs.publish || 'no' }}
+      release_tag: ${{ inputs.release_tag || '' }}

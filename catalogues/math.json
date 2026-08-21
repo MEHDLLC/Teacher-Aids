@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "_comment": "Maths manipulatives. Every set here is derived from a single dimension so its pieces stay comparable -- one unit cube, one shared edge, one whole circle.",
+  "release": {
+    "name": "teacher-aids-math",
+    "version": "0.1.0",
+    "title": "Teacher Aids: Maths Manipulatives",
+    "summary": "Fraction circles and bars, base-ten place value blocks with a lattice thousand cube, the standard six pattern blocks on a one-inch edge, geometric solids as blocks or as countable open frames, ten frames with counters, and a teaching clock whose hands turn on a printed post."
+  },
+  "items": [
+    {
+      "name": "fraction-circles_1-2-3-4-6-8_120mm",
+      "generator": "fraction-set",
+      "options": {
+        "style": "circle",
+        "denominators": "1,2,3,4,6,8",
+        "size": 120
+      }
+    },
+    {
+      "name": "fraction-circles_full-set_140mm",
+      "generator": "fraction-set",
+      "options": {
+        "style": "circle",
+        "denominators": "1,2,3,4,5,6,8,10,12",
+        "size": 140,
+        "max_pieces": 60
+      },
+      "_comment": "1..12 is 51 pieces; max_pieces is raised to let the whole set through in one run"
+    },
+    {
+      "name": "fraction-bars_1-2-3-4-6-8-12_200mm",
+      "generator": "fraction-set",
+      "options": {
+        "style": "bar",
+        "denominators": "1,2,3,4,6,8,12",
+        "size": 200,
+        "bar_width": 28
+      }
+    },
+    {
+      "name": "place-value_base10_10mm_lattice",
+      "generator": "place-value",
+      "options": {
+        "base": 10,
+        "unit": 10,
+        "cube_style": "lattice"
+      }
+    },
+    {
+      "name": "place-value_base10_10mm_no-cube",
+      "generator": "place-value",
+      "options": {
+        "base": 10,
+        "unit": 10,
+        "pieces": "unit,rod,flat",
+        "quantity": "20,20,10,1"
+      },
+      "_comment": "the everyday set: no thousand cube, and enough units and rods for a table of four"
+    },
+    {
+      "name": "place-value_base5_12mm",
+      "generator": "place-value",
+      "options": {
+        "base": 5,
+        "unit": 12,
+        "cube_style": "lattice"
+      },
+      "_comment": "base five, so a class can see that place value is not a fact about the number ten"
+    },
+    {
+      "name": "pattern-blocks_1inch_6each",
+      "generator": "pattern-blocks",
+      "options": {
+        "edge": 25.4,
+        "quantity": 6
+      }
+    },
+    {
+      "name": "pattern-blocks_1inch_stacking",
+      "generator": "pattern-blocks",
+      "options": {
+        "edge": 25.4,
+        "quantity": 4,
+        "stack_dimple": true
+      }
+    },
+    {
+      "name": "geometry-solids_50mm_solid",
+      "generator": "geometry-solid",
+      "options": {
+        "size": 50,
+        "style": "solid"
+      }
+    },
+    {
+      "name": "geometry-solids_45mm_frames",
+      "generator": "geometry-solid",
+      "options": {
+        "size": 45,
+        "style": "frame",
+        "solids": "cube,cuboid,triangular-prism,hexagonal-prism,square-pyramid,triangular-pyramid",
+        "rib": 4
+      }
+    },
+    {
+      "name": "geometry-solids_platonic_40mm_frames",
+      "generator": "geometry-solid",
+      "options": {
+        "size": 40,
+        "style": "frame",
+        "solids": "tetrahedron,cube,octahedron,dodecahedron,icosahedron",
+        "rib": 3.5
+      },
+      "_comment": "the five Platonic solids as frames: the only way a child can actually count twenty faces and thirty edges"
+    },
+    {
+      "name": "ten-frame_2x5_26mm",
+      "generator": "ten-frame",
+      "options": {
+        "rows": 2,
+        "columns": 5,
+        "cell": 26
+      }
+    },
+    {
+      "name": "ten-frame_2x5_26mm_numbered",
+      "generator": "ten-frame",
+      "options": {
+        "rows": 2,
+        "columns": 5,
+        "cell": 26,
+        "numbers": "count"
+      }
+    },
+    {
+      "name": "twenty-frame_2x10_22mm",
+      "generator": "ten-frame",
+      "options": {
+        "rows": 2,
+        "columns": 10,
+        "cell": 22,
+        "split_after": 5
+      }
+    },
+    {
+      "name": "clock_150mm",
+      "generator": "clock-face",
+      "options": {
+        "diameter": 150
+      }
+    },
+    {
+      "name": "clock_220mm_wall",
+      "generator": "clock-face",
+      "options": {
+        "diameter": 220,
+        "thickness": 5,
+        "hand_thickness": 4
+      }
+    },
+    {
+      "name": "clock_120mm_hours-only",
+      "generator": "clock-face",
+      "options": {
+        "diameter": 120,
+        "minute_numbers": false,
+        "minute_ticks": true
+      },
+      "_comment": "a first clock: twelve numbers and the ticks, without the minute ring to read past"
+    }
+  ],
+  "sweeps": [
+    {
+      "generator": "fraction-set",
+      "name": "fraction-{style}_halves-to-{denominators}_100mm",
+      "options": {
+        "size": 100,
+        "thickness": 5
+      },
+      "axes": {
+        "style": ["circle", "bar"],
+        "denominators": ["1,2,4,8", "1,2,3,6"]
+      },
+      "_comment": "the two families a primary class meets first: halving, and thirds"
+    }
+  ]
+}

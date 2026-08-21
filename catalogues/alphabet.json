@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "_comment": "Letters and literacy. `items` are one variant each; `sweeps` expand their axes into every combination and `cap` takes an even spread when that would be more than anyone wants. Validated against each generator's own options, so a typo here fails in seconds rather than in a hundred build jobs.",
+  "release": {
+    "name": "teacher-aids-alphabet",
+    "version": "0.1.0",
+    "title": "Teacher Aids: Letters and Literacy",
+    "summary": "Printable alphabet sets in six themes -- chunky blocks, textured faces, animal tiles, hollow outlines, finger-tracing cards and cut-through windows -- plus letter stencils with the bridges built in. Every set shares one font at one baseline, so tiles from different themes still line up when a child spells with them."
+  },
+  "items": [
+    {
+      "name": "letter-tile_A-Z_blocky_40mm",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "uppercase",
+        "theme": "blocky",
+        "tile_size": 40,
+        "thickness": 4
+      }
+    },
+    {
+      "name": "letter-tile_a-z_blocky_40mm_with-bar",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "lowercase",
+        "theme": "blocky",
+        "tile_size": 40,
+        "orientation_bar": true
+      },
+      "_comment": "the orientation bar is what stops b, d, p and q being picked up as each other, which is the single most common confusion at this age"
+    },
+    {
+      "name": "letter-tile_A-Z_animal_50mm",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "uppercase",
+        "theme": "animal",
+        "tile_size": 50,
+        "thickness": 4.5
+      }
+    },
+    {
+      "name": "letter-tile_A-Z_tracing_60mm",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "uppercase",
+        "theme": "tracing",
+        "tile_size": 60,
+        "thickness": 6,
+        "relief_depth": 2.6,
+        "weight": 0.24
+      },
+      "_comment": "a tracing groove has to take a five-year-old's fingertip: 2.6 mm deep and a 14 mm stroke at this size"
+    },
+    {
+      "name": "letter-tile_a-z_tracing_60mm",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "lowercase",
+        "theme": "tracing",
+        "tile_size": 60,
+        "thickness": 6,
+        "relief_depth": 2.6,
+        "weight": 0.24,
+        "orientation_bar": true
+      }
+    },
+    {
+      "name": "letter-tile_A-Z_magnetic_45mm",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "uppercase",
+        "theme": "blocky",
+        "tile_size": 45,
+        "thickness": 5,
+        "magnet": "10x2"
+      }
+    },
+    {
+      "name": "letter-tile_vowels_patterned_45mm",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "vowels",
+        "theme": "patterned",
+        "pattern": "round",
+        "tile_size": 45
+      },
+      "_comment": "vowels in their own texture, so a set sorts by feel as well as by sight"
+    },
+    {
+      "name": "letter-tile_0-9_blocky_40mm",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "digits",
+        "theme": "blocky",
+        "tile_size": 40
+      }
+    },
+    {
+      "name": "letter-tile_A-Z_keyring_30mm",
+      "generator": "letter-tile",
+      "options": {
+        "charset": "uppercase",
+        "theme": "blocky",
+        "tile_size": 30,
+        "thickness": 3,
+        "hole": 4,
+        "margin": 2
+      }
+    },
+    {
+      "name": "stencil_A-Z_45mm",
+      "generator": "stencil",
+      "options": {
+        "charset": "uppercase",
+        "cap_height": 45
+      }
+    },
+    {
+      "name": "stencil_0-9_45mm",
+      "generator": "stencil",
+      "options": {
+        "charset": "digits",
+        "cap_height": 45
+      }
+    },
+    {
+      "name": "stencil_strip_reading-corner",
+      "generator": "stencil",
+      "options": {
+        "mode": "strip",
+        "text": "READING CORNER",
+        "cap_height": 34,
+        "border": 12
+      }
+    }
+  ],
+  "sweeps": [
+    {
+      "generator": "letter-tile",
+      "name": "letter-tile_A-F_{theme}_{tile_size}mm",
+      "options": {
+        "charset": "A-F"
+      },
+      "axes": {
+        "theme": ["blocky", "patterned", "outline", "window"],
+        "tile_size": [35, 50]
+      },
+      "cap": 6,
+      "_comment": "a sampler: six tiles per theme so a school can print one of each and decide before committing to twenty-six"
+    }
+  ]
+}

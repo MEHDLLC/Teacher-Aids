@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "_comment": "Classroom kit: the lettered things a teacher prints in a set of thirty. Names here are examples -- rerun any of these with your own class list.",
+  "release": {
+    "name": "teacher-aids-classroom",
+    "version": "0.1.0",
+    "title": "Teacher Aids: Classroom Kit",
+    "summary": "Desk name plates fitted to one plate size so a whole class set lines up, bookmarks with a name down the length and a shape cut through the top, and paddle hall passes lettered on both faces."
+  },
+  "items": [
+    {
+      "name": "name-plates_class-set_wedge",
+      "generator": "name-plate",
+      "options": {
+        "names": "Amara;Ben;Chidi;Dara;Elif;Finn;Grace;Hana;Idris;Jonah;Kai;Lena",
+        "style": "wedge",
+        "width": 180
+      },
+      "_comment": "an example class list; rerun with --names 'your;class;here'"
+    },
+    {
+      "name": "name-plates_class-set_flat-both-sides",
+      "generator": "name-plate",
+      "options": {
+        "names": "Amara;Ben;Chidi;Dara;Elif;Finn",
+        "style": "flat",
+        "both_sides": true,
+        "width": 170
+      }
+    },
+    {
+      "name": "name-plate_teacher_wedge",
+      "generator": "name-plate",
+      "options": {
+        "names": "Mr Okafor",
+        "second_line": "ROOM 12",
+        "style": "wedge",
+        "width": 200,
+        "face_height": 55,
+        "pattern": "diamond"
+      }
+    },
+    {
+      "name": "name-plate_stand_single",
+      "generator": "name-plate",
+      "options": {
+        "names": "Zoe",
+        "style": "stand"
+      }
+    },
+    {
+      "name": "bookmarks_words_star",
+      "generator": "bookmark",
+      "options": {
+        "texts": "READ;THINK;WONDER;IMAGINE",
+        "motif": "star"
+      }
+    },
+    {
+      "name": "bookmarks_class-set_heart",
+      "generator": "bookmark",
+      "options": {
+        "texts": "Amara;Ben;Chidi;Dara;Elif;Finn;Grace;Hana",
+        "motif": "heart",
+        "length": 140
+      }
+    },
+    {
+      "name": "bookmark_cut-through_read",
+      "generator": "bookmark",
+      "options": {
+        "text": "READ",
+        "relief": "cut",
+        "thickness": 2.4,
+        "motif": "circle"
+      }
+    },
+    {
+      "name": "hall-passes_destinations",
+      "generator": "hall-pass",
+      "options": {
+        "passes": "LIBRARY;OFFICE;NURSE;BATHROOM",
+        "text": "HALL PASS"
+      }
+    },
+    {
+      "name": "hall-pass_single_room-12",
+      "generator": "hall-pass",
+      "options": {
+        "text": "HALL PASS",
+        "second_line": "ROOM 12",
+        "pattern": "star"
+      }
+    },
+    {
+      "name": "hall-pass_cut-through",
+      "generator": "hall-pass",
+      "options": {
+        "text": "PASS",
+        "relief": "cut",
+        "both_sides": false,
+        "thickness": 6
+      },
+      "_comment": "cut clean through, so it reads from both sides with nothing raised to catch"
+    }
+  ],
+  "sweeps": [
+    {
+      "generator": "bookmark",
+      "name": "bookmark_read_{motif}",
+      "options": {
+        "text": "READ"
+      },
+      "axes": {
+        "motif": ["star", "circle", "heart", "diamond", "triangle", "hexagon"]
+      },
+      "cap": 4
+    }
+  ]
+}
